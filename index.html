@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navbar Lengkap</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    body {
+      margin: 0;
+      padding-top: 65px;
+      padding-bottom: 65px;
+      background: #f0f0f0;
+      font-family: sans-serif;
+    }
+
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      z-index: 999;
+      box-sizing: border-box;
+    }
+
+    .top-navbar .info-icon {
+      font-size: 22px;
+      color: #333;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s;
+    }
+
+    .top-navbar .title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      text-transform: uppercase;
+    }
+
+    .bottom-navbar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 15px 0;
+      z-index: 999;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #333;
+      padding: 10px;
+      text-decoration: none;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      border-radius: 20px;
+    }
+
+    .nav-item.active {
+      background: #333;
+      color: #fff;
+      padding: 10px 20px;
+    }
+
+    .nav-item:hover {
+      padding: 10px 20px;
+    }
+
+    .bottom-sheet {
+      position: fixed;
+      bottom: -100%;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background: #fff;
+      transition: bottom 0.8s ease-in-out;
+      z-index: 9;
+      padding: 10px 20px;
+      margin-bottom: 50px;
+      text-align: center;
+      color: #555;
+      box-sizing: border-box;
+    }
+
+    .bottom-sheet.active {
+      bottom: 0;
+    }
+
+    .handle {
+      width: 40px;
+      height: 5px;
+      background: #ccc;
+      border-radius: 3px;
+      margin: 0 auto 5px;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    #content {
+      box-sizing: border-box;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <div class="top-navbar">
+    <div class="title" id="pageTitle">PLIXLEARN</div>
+    <div class="info-icon" id="infoToggle">
+      <i class="fas fa-info-circle" id="infoIcon"></i>
+    </div>
+  </div>
+
+  <!-- Konten Dinamis -->
+  <div id="content"></div>
+
+  <!-- Bottom Sheet Modal -->
+  <div class="overlay" id="overlay"></div>
+  <div class="bottom-sheet" id="bottomSheet">
+    <div class="handle" id="handle"></div>
+    <p>Ini adalah menu info yang muncul dari bawah, bisa diisi apa aja.</p>
+  </div>
+
+  <!-- Bottom Navbar -->
+  <div class="bottom-navbar">
+    <div class="nav-item active" data-title="Plixlearn"><i class="fas fa-home"></i></div>
+    <div class="nav-item" data-title="Notifikasi"><i class="fas fa-bell"></i></div>
+    <div class="nav-item" data-title="Settings"><i class="fas fa-gear"></i></div>
+  </div>
+
+  <script>
+    const infoToggle = document.getElementById('infoToggle');
+    const infoIcon = document.getElementById('infoIcon');
+    const bottomSheet = document.getElementById('bottomSheet');
+    const overlay = document.getElementById('overlay');
+    const handle = document.getElementById('handle');
+    const pageTitle = document.getElementById('pageTitle');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    const content = document.getElementById('content');
+
+    let isOpen = false;
+
+    infoToggle.addEventListener('click', () => {
+      isOpen = !isOpen;
+      bottomSheet.classList.toggle('active');
+      overlay.classList.toggle('active');
+      infoIcon.classList.toggle('fa-info-circle', !isOpen);
+      infoIcon.classList.toggle('fa-circle-xmark', isOpen);
+    });
+
+    overlay.addEventListener('click', () => {
+      bottomSheet.classList.remove('active');
+      overlay.classList.remove('active');
+      infoIcon.classList.remove('fa-circle-xmark');
+      infoIcon.classList.add('fa-info-circle');
+      isOpen = false;
+    });
+
+    bottomSheet.addEventListener('click', (event) => event.stopPropagation());
+    handle.addEventListener('click', (event) => event.stopPropagation());
+
+    function loadContent(file) {
+      fetch(file)
+        .then(res => res.text())
+        .then(html => {
+          content.innerHTML = html;
+        });
+    }
+
+    const fileMap = {
+      'Plixlearn': 'home.html',
+      'Notifikasi': 'notifikasi.html',
+      'Settings': 'pengaturan.html'
+    };
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        const newTitle = item.getAttribute('data-title');
+        pageTitle.textContent = newTitle;
+        loadContent(fileMap[newTitle]);
+      });
+    });
+
+    // Load default Home content
+    loadContent('home.html');
+  </script>
+
+</body>
+</html>

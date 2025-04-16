@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Navbar Lengkap</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
   <style>
     body {
       margin: 0;
-      padding-top: 65px;
+      padding-top: 60px;
       padding-bottom: 65px;
       background: #f0f0f0;
+      user-select: none;
       font-family: sans-serif;
     }
 
@@ -22,7 +22,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px;
+      padding: 10px 15px;
       z-index: 999;
       box-sizing: border-box;
     }
@@ -90,6 +90,7 @@
       z-index: 9;
       padding: 10px 20px;
       margin-bottom: 50px;
+      font-size: 10px;
       text-align: center;
       color: #555;
       box-sizing: border-box;
@@ -123,8 +124,54 @@
 
     #content {
       box-sizing: border-box;
-      padding: 5px;
+      padding: 10px;
     }
+    
+.home-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 5px;
+  font-family: sans-serif;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.home-container .home-card {
+  background: #fff;
+  color: #333;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.home-container .home-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.home-container .home-card p {
+  margin: 4px 0 0;
+  color: #444;
+  font-size: 10px;
+}
+
+.home-container .icon-right {
+  float: right;
+  color: #666;
+}
+
+.home-container .grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.home-container a {
+  text-decoration: none;
+  cursor: none;
+}
   </style>
 </head>
 <body>
@@ -136,22 +183,181 @@
       <i class="fas fa-info-circle" id="infoIcon"></i>
     </div>
   </div>
-
-  <!-- Konten Dinamis -->
   <div id="content"></div>
+<template id="tpl-plixlearn">
+    <div class="home-container">
+        <!-- Games Ujian Bahasa Jepang -->
+        <div class="home-card">
+            <a href="/game">
+                <h3>
+                    Games Ujian Bahasa Jepang
+                    <i class="fa-solid fa-gamepad icon-right"></i>
+                </h3>
+                <p>Mainkan mini game sambil menguji kemampuan bahasa Jepangmu.</p>
+            </a>
+        </div>
 
-  <!-- Bottom Sheet Modal -->
-  <div class="overlay" id="overlay"></div>
-  <div class="bottom-sheet" id="bottomSheet">
+        <!-- Grid 2 kolom -->
+        <div class="grid-2">
+            <div class="home-card">
+                <a href="/kosakata">
+                    <h3>
+                        Kosakata
+                        <i class="fa-solid fa-bookmark icon-right"></i>
+                    </h3>
+                    <p>Belajari kosakata Jepang dari dasar hingga mahir.</p>
+                </a>
+            </div>
+
+            <div class="home-card">
+                <a href="/kanji">
+                    <h3>
+                        Kanji
+                        <i class="fa-solid fa-bookmark icon-right"></i>
+                    </h3>
+                    <p>Latihan stroke dan makna kanji secara bertahap.</p>
+                </a>
+            </div>
+
+            <div class="home-card">
+                <a href="/alfabet">
+                    <h3>
+                        Alfabet
+                        <i class="fa-solid fa-bookmark icon-right"></i>
+                    </h3>
+                    <p>Pelajari hiragana dan katakana interaktif.</p>
+                </a>
+            </div>
+
+            <div class="home-card">
+                <a href="/percakapan">
+                    <h3>
+                        Percakapan
+                        <i class="fa-solid fa-bookmark icon-right"></i>
+                    </h3>
+                    <p>Latihan dialog sehari-hari dengan audio asli.</p>
+                </a>
+            </div>
+
+            <div class="home-card">
+                <a href="/tatabahasa">
+                    <h3>
+                        Tata Bahasa
+                        <i class="fa-solid fa-bookmark icon-right"></i>
+                    </h3>
+                    <p>Pola kalimat dan struktur grammar Jepang.</p>
+                </a>
+            </div>
+
+            <div class="home-card">
+                <a href="/jlpt">
+                    <h3>
+                        Ulangan JLPT
+                        <i class="fa-solid fa-bookmark icon-right"></i>
+                    </h3>
+                    <p>Simulasi soal JLPT dari N5 sampai N1.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</template>
+
+  <template id="tpl-notifikasi"><div style="max-width:700px; margin:0 auto; padding:5px; font-family:sans-serif; display:flex; flex-direction:column; gap:10px;">
+
+  <!-- Notifikasi Utama -->
+  <div style="background:#fff; padding:12px 16px; border-left:4px solid #fdd835; box-shadow:0 1px 5px rgba(0,0,0,0.03); position:relative;">
+    <div style="font-size:14px; font-weight:600; color:#222; border-bottom:1px solid #ddd; padding-bottom:4px; margin-bottom:4px;">
+      Update Materi Kanji
+    </div>
+    <p style="font-size:11px; color:#555; margin:0;">Materi kanji N4 telah diperbarui dengan soal tambahan.</p>
+    <div style="position:absolute; top:10px; right:16px; font-size:10px; color:#999;">15 Apr 2025</div>
+  </div>
+
+  <!-- Notifikasi 2 -->
+  <div style="background:#fff; padding:12px 16px; border-left:4px solid #66bb6a; box-shadow:0 1px 5px rgba(0,0,0,0.03); position:relative;">
+    <div style="font-size:14px; font-weight:600; color:#222; border-bottom:1px solid #ddd; padding-bottom:4px; margin-bottom:4px;">
+      Event Quiz Mingguan
+    </div>
+    <p style="font-size:11px; color:#555; margin:0;">Jangan lupa ikuti quiz minggu ini dan kumpulkan poin!</p>
+    <div style="position:absolute; top:10px; right:16px; font-size:10px; color:#999;">13 Apr 2025</div>
+  </div>
+
+  <!-- Notifikasi 3 -->
+  <div style="background:#fff; padding:12px 16px; border-left:4px solid #66bb6a; box-shadow:0 1px 5px rgba(0,0,0,0.03); position:relative;">
+    <div style="font-size:14px; font-weight:600; color:#222; border-bottom:1px solid #ddd; padding-bottom:4px; margin-bottom:4px;">
+      Challenge Harian
+    </div>
+    <p style="font-size:11px; color:#555; margin:0;">Selesaikan 5 latihan kosakata hari ini untuk bonus XP!</p>
+    <div style="position:absolute; top:10px; right:16px; font-size:10px; color:#999;">12 Apr 2025</div>
+  </div>
+
+  <!-- Notifikasi 4 -->
+  <div style="background:#fff; padding:12px 16px; border-left:4px solid #66bb6a; box-shadow:0 1px 5px rgba(0,0,0,0.03); position:relative;">
+    <div style="font-size:14px; font-weight:600; color:#222; border-bottom:1px solid #ddd; padding-bottom:4px; margin-bottom:4px;">
+      Pengumuman Leaderboard
+    </div>
+    <p style="font-size:11px; color:#555; margin:0;">Cek siapa yang jadi top 3 minggu ini di leaderboard nasional.</p>
+    <div style="position:absolute; top:10px; right:16px; font-size:10px; color:#999;">10 Apr 2025</div>
+  </div>
+
+  <!-- Notifikasi 5 -->
+  <div style="background:#fff; padding:12px 16px; border-left:4px solid #66bb6a; box-shadow:0 1px 5px rgba(0,0,0,0.03); position:relative;">
+    <div style="font-size:14px; font-weight:600; color:#222; border-bottom:1px solid #ddd; padding-bottom:4px; margin-bottom:4px;">
+      Maintenance Sistem
+    </div>
+    <p style="font-size:11px; color:#555; margin:0;">Aplikasi akan offline sementara pada 17 Apr 2025 jam 01:00–02:00 WIB.</p>
+    <div style="position:absolute; top:10px; right:16px; font-size:10px; color:#999;">09 Apr 2025</div>
+  </div>
+</div>
+  </template>
+
+  <template id="tpl-settings">
+    <div style="max-width:700px; margin:0 auto; padding:5px; font-family:sans-serif; display:flex; flex-direction:column; gap:12px;">
+
+  <!-- Card: Privasi -->
+  <div style="box-shadow:0 2px 10px rgba(0,0,0,0.05);">
+    <div style="background:#fff; padding:12px 16px; font-size:14px; font-weight:600; color:#333; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-lock" style="width:16px;"></i> Privasi dan Keamanan
+    </div>
+    <div style="background:#f5f5f5; padding:12px 16px; font-size:13px; color:#555;">
+      Lindungi informasi pribadi Anda dengan pengaturan keamanan yang dapat disesuaikan. Kontrol izin akses aplikasi, aktifkan autentikasi tambahan, dan kelola data pribadi Anda dengan lebih aman.
+    </div>
+  </div>
+
+  <!-- Card: Premium -->
+  <div style="box-shadow:0 2px 10px rgba(0,0,0,0.05);">
+    <div style="background:#fff; padding:12px 16px; font-size:14px; font-weight:600; color:#333; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-crown" style="width:16px;"></i> Upgrade ke Premium
+    </div>
+    <div style="background:#f5f5f5; padding:12px 16px; font-size:13px; color:#555;">
+      Nikmati pengalaman belajar tanpa batas dengan fitur premium. mengunlock fitur dan support untuk Developer.
+      <div style="background:#f5f5f5;display:flex; gap:5px; margin-top:10px;">
+        <div style="flex:1; background:#e0e0e0; text-align:center; padding:8px;">Lihat permium</div>
+        <div style="flex:1; background:#333; color:#fff; text-align:center; padding:8px;">Pesan premium</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card: Tentang -->
+  <div style="box-shadow:0 2px 10px rgba(0,0,0,0.05);">
+    <div style="background:#fff; padding:12px 16px; font-size:14px; font-weight:600; color:#333; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-circle-info" style="width:16px;"></i> Tentang Info Aplikasi
+    </div>
+    <div style="background:#f5f5f5; padding:12px 16px; font-size:13px; color:#555;">
+      Aplikasi Versi: 1.0.0 - Developer: Tim PLIX - Hak cipta © 2025. Kami berkomitmen untuk terus menghadirkan fitur-fitur terbaik.
+    </div>
+  </div>
+</div>
+  </template>
+  
+  <div class="overlay" id="overlay"></div><div class="bottom-sheet" id="bottomSheet">
     <div class="handle" id="handle"></div>
     <p>Ini adalah menu info yang muncul dari bawah, bisa diisi apa aja.</p>
   </div>
-
-  <!-- Bottom Navbar -->
   <div class="bottom-navbar">
-    <div class="nav-item active" data-title="Plixlearn"><i class="fas fa-home"></i></div>
+    <div class="nav-item active" data-title="Plixlearn"><i class="fas fa-circle-h"></i></div>
     <div class="nav-item" data-title="Notifikasi"><i class="fas fa-bell"></i></div>
-    <div class="nav-item" data-title="Settings"><i class="fas fa-gear"></i></div>
+    <div class="nav-item" data-title="Settings"><i class="fas fa-universal-access"></i></div>
   </div>
 
   <script>
@@ -162,9 +368,7 @@
     const handle = document.getElementById('handle');
     const pageTitle = document.getElementById('pageTitle');
     const navItems = document.querySelectorAll('.nav-item');
-
     const content = document.getElementById('content');
-
     let isOpen = false;
 
     infoToggle.addEventListener('click', () => {
@@ -186,19 +390,15 @@
     bottomSheet.addEventListener('click', (event) => event.stopPropagation());
     handle.addEventListener('click', (event) => event.stopPropagation());
 
-    function loadContent(file) {
-      fetch(file)
-        .then(res => res.text())
-        .then(html => {
-          content.innerHTML = html;
-        });
+    function loadContent(page) {
+      const templateId = `tpl-${page.toLowerCase()}`;
+      const template = document.getElementById(templateId);
+      if (template) {
+        content.innerHTML = template.innerHTML;
+      } else {
+        content.innerHTML = `<p>Konten tidak ditemukan.</p>`;
+      }
     }
-
-    const fileMap = {
-      'Plixlearn': 'home.html',
-      'Notifikasi': 'notifikasi.html',
-      'Settings': 'settings.html'
-    };
 
     navItems.forEach(item => {
       item.addEventListener('click', () => {
@@ -206,12 +406,10 @@
         item.classList.add('active');
         const newTitle = item.getAttribute('data-title');
         pageTitle.textContent = newTitle;
-        loadContent(fileMap[newTitle]);
+        loadContent(newTitle);
       });
     });
-
-    // Load default Home content
-    loadContent('home.html');
+    loadContent('Plixlearn');
   </script>
 
 </body>

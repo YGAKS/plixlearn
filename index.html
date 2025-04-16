@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navbar Lengkap</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
   <style>
     body {
@@ -55,6 +56,18 @@
       align-items: center;
       padding: 15px 0;
       z-index: 999;
+      animation: slideUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideUp {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     .nav-item {
@@ -188,7 +201,7 @@
     <div class="home-container">
         <!-- Games Ujian Bahasa Jepang -->
         <div class="home-card">
-            <a href="https://ygaks.github.io/plixlearn/game">
+            <a href="/game">
                 <h3>
                     Games Ujian Bahasa Jepang
                     <i class="fa-solid fa-gamepad icon-right"></i>
@@ -200,7 +213,7 @@
         <!-- Grid 2 kolom -->
         <div class="grid-2">
             <div class="home-card">
-                <a href="https://ygaks.github.io/plixlearn/kosakata">
+                <a href="/kosakata">
                     <h3>
                         Kosakata
                         <i class="fa-solid fa-bookmark icon-right"></i>
@@ -210,7 +223,7 @@
             </div>
 
             <div class="home-card">
-                <a href="https://ygaks.github.io/plixlearn/kanji">
+                <a href="/kanji">
                     <h3>
                         Kanji
                         <i class="fa-solid fa-bookmark icon-right"></i>
@@ -220,7 +233,7 @@
             </div>
 
             <div class="home-card">
-                <a href="https://ygaks.github.io/plixlearn/alfabet">
+                <a href="/alfabet">
                     <h3>
                         Alfabet
                         <i class="fa-solid fa-bookmark icon-right"></i>
@@ -230,7 +243,7 @@
             </div>
 
             <div class="home-card">
-                <a href="https://ygaks.github.io/plixlearn/percakapan">
+                <a href="/percakapan">
                     <h3>
                         Percakapan
                         <i class="fa-solid fa-bookmark icon-right"></i>
@@ -240,7 +253,7 @@
             </div>
 
             <div class="home-card">
-                <a href="https://ygaks.github.io/plixlearn/tatabahasa">
+                <a href="/tatabahasa">
                     <h3>
                         Tata Bahasa
                         <i class="fa-solid fa-bookmark icon-right"></i>
@@ -250,7 +263,7 @@
             </div>
 
             <div class="home-card">
-                <a href="https://ygaks.github.io/plixlearn/jlpt">
+                <a href="/jlpt">
                     <h3>
                         Ulangan JLPT
                         <i class="fa-solid fa-bookmark icon-right"></i>

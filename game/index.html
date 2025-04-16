@@ -20,13 +20,14 @@
       width: 100%;
       background: #fff;
       display: flex;
+      justify-content: space-between;
       align-items: center;
       padding: 10px 15px;
       z-index: 999;
       box-sizing: border-box;
     }
 
-    .back-icon {
+    .top-navbar .info-icon {
       font-size: 22px;
       color: #333;
       width: 34px;
@@ -34,11 +35,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: color 0.3s;
     }
 
-    .navbar-title {
+    .top-navbar .title {
       font-size: 20px;
-      margin-left: 10px;
       font-weight: bold;
       color: #333;
       text-transform: uppercase;
@@ -48,8 +49,10 @@
 <body>
 
   <div class="top-navbar">
-    <i class="fas fa-arrow-left back-icon" onclick="window.location.href='https://ygaks.github.io/plixlearn/'"></i>
-    <span class="navbar-title">Judul Halaman</span>
+    <div class="title" id="pageTitle">GAME PLIXLEARN</div>
+    <div class="info-icon" id="infoToggle">
+      <i class="fas fa-circle-xmark info-icon" onclick="window.location.href='https://ygaks.github.io/plixlearn/'"></i>
+    </div>
   </div>
 
 </body>

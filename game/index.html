@@ -44,8 +44,7 @@
       color: #333;
       text-transform: uppercase;
     }
-
-    /* Animasi slide down and disappear */
+    
     @keyframes slideDownOut {
       0% {
         transform: translateY(0);
@@ -67,7 +66,7 @@
       align-items: center;
       padding: 15px 0;
       z-index: 999;
-      animation: slideDownOut 1s ease-out forwards;
+      animation: slideDownOut 0.8s ease-out forwards;
     }
 
     .nav-item {
@@ -80,6 +79,12 @@
       font-size: 20px;
       transition: all 0.3s ease;
       border-radius: 20px;
+    }
+    
+     .nav-item.active {
+      background: #333;
+      color: #fff;
+      padding: 10px 20px;
     }
   </style>
 </head>
@@ -94,7 +99,7 @@
 
   <!-- Bottom Navbar -->
   <div class="bottom-navbar">
-    <a href="#" class="nav-item"><i class="fas fa-circle-h"></i></a>
+    <a href="#" class="nav-item active"><i class="fas fa-circle-h"></i></a>
     <a href="#" class="nav-item"><i class="fas fa-bell"></i></a>
     <a href="#" class="nav-item"><i class="fas fa-universal-access"></i></a>
   </div>

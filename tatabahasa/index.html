@@ -104,5 +104,11 @@
     <a href="#" class="nav-item"><i class="fas fa-universal-access"></i></a>
   </div>
 
+  <script>
+window.addEventListener("beforeunload",()=>{localStorage.setItem("scrollY",window.scrollY);});
+window.addEventListener("load",()=>{const e=localStorage.getItem("scrollY");e&&window.scrollTo(0,parseInt(e));});
+setTimeout(()=>{location.reload();},5000);
+</script>
+
 </body>
 </html>

@@ -44,71 +44,138 @@
       color: #333;
       text-transform: uppercase;
     }
-    
-    @keyframes slideDownOut {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100%);
-        opacity: 0;
-      }
+
+    .content {
+      padding: 15px;
+      margin: 0;
     }
 
-    .bottom-navbar {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #fff;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 15px 0;
-      z-index: 999;
-      animation: slideDownOut 0.8s ease-out forwards;
-    }
-
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #333;
+    .hero-card {
+      background: #fdd835;
       padding: 10px;
-      text-decoration: none;
-      font-size: 20px;
-      transition: all 0.3s ease;
-      border-radius: 20px;
+      max-width: 700px;
+      font-family: sans-serif;
+      text-align: center;
+      margin: 0 auto 12px auto;
+      position: relative;
     }
-    
-     .nav-item.active {
-      background: #333;
-      color: #fff;
-      padding: 10px 20px;
+
+    .hero-card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+      color: #333;
+    }
+
+    .hero-card p {
+      font-size: 12px;
+      margin: 0;
+      color: #555;
+    }
+
+    .hero-card .pin-icon {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .learn-container {
+      max-width: 700px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .learn-card {
+      background: #fff;
+      color: #333;
+      padding: 12px 16px;
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .learn-card:hover {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .learn-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .learn-card p {
+      margin: 4px 0 0;
+      color: #444;
+      font-size: 10px;
+    }
+
+    .icon-right {
+      float: right;
+      color: #666;
     }
   </style>
 </head>
 <body>
 
   <div class="top-navbar">
-    <div class="title" id="pageTitle">KANJI</div>
+    <div class="title" id="pageTitle">PLIXLEARN</div>
     <div class="info-icon" id="infoToggle">
       <i class="fas fa-circle-xmark info-icon" onclick="window.location.href='https://ygaks.github.io/plixlearn/'"></i>
     </div>
   </div>
 
-  <!-- Bottom Navbar -->
-  <div class="bottom-navbar">
-    <a href="#" class="nav-item active"><i class="fas fa-circle-h"></i></a>
-    <a href="#" class="nav-item"><i class="fas fa-bell"></i></a>
-    <a href="#" class="nav-item"><i class="fas fa-universal-access"></i></a>
+  <div class="content">
+
+    <div class="hero-card">
+      <i class="fas fa-thumbtack pin-icon"></i>
+      <h2>KARAKTER KANJI</h2>
+      <p>Pelajari karakter Kanji Jepang mulai dari dasar, penggunaan sehari-hari, hingga tingkat lanjutan. Cocok untuk semua level!</p>
+    </div>
+
+    <div class="learn-container">
+      <div class="learn-card">
+        <h3>
+          Kanji Dasar (Basic)
+          <i class="fas fa-book-open icon-right"></i>
+        </h3>
+        <p>Mulai dengan Kanji paling dasar yang wajib dikuasai oleh pemula. Fokus pada bentuk dan makna dasar dari simbol Kanji.</p>
+      </div>
+
+      <div class="learn-card">
+        <h3>
+          Kanji Sehari-hari
+          <i class="fas fa-house icon-right"></i>
+        </h3>
+        <p>Belajar Kanji yang sering digunakan dalam aktivitas harian, seperti sekolah, belanja, waktu, dan tempat umum.</p>
+      </div>
+
+      <div class="learn-card">
+        <h3>
+          Kanji Lanjutan (Advanced)
+          <i class="fas fa-brain icon-right"></i>
+        </h3>
+        <p>Tingkatkan pemahaman dengan Kanji kompleks yang digunakan dalam literatur, berita, dan tulisan akademik.</p>
+      </div>
+    </div>
   </div>
 
-      <script>
-window.addEventListener("beforeunload",()=>{localStorage.setItem("scrollY",window.scrollY);});
-window.addEventListener("load",()=>{const e=localStorage.getItem("scrollY");e&&window.scrollTo(0,parseInt(e));});
-setTimeout(()=>{location.reload();},5000);
-</script>
+  <script>
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("scrollY", window.scrollY);
+    });
+    window.addEventListener("load", () => {
+      const e = localStorage.getItem("scrollY");
+      e && window.scrollTo(0, parseInt(e));
+    });
+    setTimeout(() => { location.reload(); }, 5000);
+  </script>
 
 </body>
 </html>

@@ -103,7 +103,7 @@
       z-index: 9;
       padding: 10px 20px;
       margin-bottom: 50px;
-      font-size: 10px;
+      font-size: 12px;
       text-align: center;
       color: #555;
       box-sizing: border-box;
@@ -191,23 +191,123 @@
   cursor: none;
 }
 
-.btn-premium {
-    flex: 1;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
-  }
+.container-notif {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 5px;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
 
-  .btn-premium:hover {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
-  }
+.card-notif {
+  background: #fff;
+  padding: 12px 16px;
+  position: relative;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.container-notif .card-notif:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
 
-  .btn-premium {
-    background: #fff;
-    color: #333;
-  }
+.judul-notif {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-toggle {
+  transition: transform 0.3s ease;
+}
+
+.card-notif.active .icon-toggle {
+  transform: rotate(180deg);
+}
+
+.isi-notif {
+  font-size: 11px;
+  color: #555;
+  margin: 0;
+}
+
+.notif-content {
+  background: #fdd835;
+  max-height: 0;
+  overflow-y: hidden;
+  transition: max-height 0.3s ease, padding 0.2s ease, border-color 0.3s ease;
+  font-size: 12px;
+  color: #444;
+  padding: 0 12px;
+  margin: 0 0 12px 0;
+}
+
+.notif-content.active {
+  max-height: 100px;
+  padding: 8px 12px;
+  overflow-y: auto;
+}
+
+.container-option {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 5px;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-option {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  background: #fff;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-body {
+  background: #f5f5f5;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #555;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-option {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  background: #fff;
+  color: #333;
+}
+
+.btn-option:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
   </style>
 </head>
 <body>
@@ -230,6 +330,22 @@
                 <p>Mainkan mini game sambil menguji kemampuan bahasa Jepangmu.</p>
         </div>
         <div class="grid-2">
+            <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/alfabet'">
+                    <h3>
+                        Huruf-angka
+                        <i class="fa-solid fa-bookmark icon-right"></i>
+                    </h3>
+                    <p>Pelajari hiragana dan katakana  interaktif beserta angka.</p>
+            </div>
+
+            <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/percakapan'">
+                    <h3>
+                        Percakapan
+                        <i class="fa-solid fa-bookmark icon-right"></i>
+                    </h3>
+                    <p>Latihan dialog sehari-hari dengan audio asli.</p>
+            </div>
+            
             <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/kosakata'">
                     <h3>
                         Kosakata
@@ -240,26 +356,10 @@
 
             <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/kanji'">
                     <h3>
-                        Kanji
+                        Karakter Kanji
                         <i class="fa-solid fa-bookmark icon-right"></i>
                     </h3>
                     <p>Latihan stroke dan makna kanji secara bertahap.</p>
-            </div>
-
-            <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/alfabet'">
-                    <h3>
-                        Alfabet
-                        <i class="fa-solid fa-bookmark icon-right"></i>
-                    </h3>
-                    <p>Pelajari hiragana dan katakana interaktif.</p>
-            </div>
-
-            <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/percakapan'">
-                    <h3>
-                        Percakapan
-                        <i class="fa-solid fa-bookmark icon-right"></i>
-                    </h3>
-                    <p>Latihan dialog sehari-hari dengan audio asli.</p>
             </div>
 
             <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/tatabahasa'">
@@ -281,97 +381,77 @@
     </div>
 </template>
 
-  <template id="tpl-notifikasi"><div style="max-width:700px; margin:0 auto; padding:5px; font-family:sans-serif; display:flex; flex-direction:column; gap:10px;">
-
-  <!-- Notifikasi Utama -->
-  <div style="background:#fff; padding:12px 16px; border-left:4px solid #fdd835; box-shadow:0 1px 5px rgba(0,0,0,0.03); position:relative;">
-    <div style="font-size:14px; font-weight:600; color:#222; border-bottom:1px solid #ddd; padding-bottom:4px; margin-bottom:4px;">
-      Update Materi Kanji
+  <template id="tpl-notifikasi">
+ <div class="container-notif">
+  <div class="card-notif" onclick="toggleNotif(this)">
+    <div class="judul-notif">
+      Pembaruan soal materi plixlearn
+      <i class="fa-solid fa-chevron-down icon-toggle"></i>
     </div>
-    <p style="font-size:11px; color:#555; margin:0;">Materi kanji N4 telah diperbarui dengan soal tambahan.</p>
-    <div style="position:absolute; top:10px; right:16px; font-size:10px; color:#999;">15 Apr 2025</div>
+    <p class="isi-notif">Materi kanji N4 telah diperbarui dengan soal tambahan.</p>
   </div>
+  <p class="notif-content">Kami telah menambahkan soal latihan baru untuk materi Kanji N4. Update ini tersedia mulai 15 Apr 2025 dan bisa langsung diakses.</p>
 
-  <!-- Notifikasi 2 -->
-  <div style="background:#fff; padding:12px 16px; border-left:4px solid #66bb6a; box-shadow:0 1px 5px rgba(0,0,0,0.03); position:relative;">
-    <div style="font-size:14px; font-weight:600; color:#222; border-bottom:1px solid #ddd; padding-bottom:4px; margin-bottom:4px;">
-      Event Quiz Mingguan
+  <div class="card-notif" onclick="toggleNotif(this)">
+    <div class="judul-notif">
+      Acara games musiman plixlearn
+      <i class="fa-solid fa-chevron-down icon-toggle"></i>
     </div>
-    <p style="font-size:11px; color:#555; margin:0;">Jangan lupa ikuti quiz minggu ini dan kumpulkan poin!</p>
-    <div style="position:absolute; top:10px; right:16px; font-size:10px; color:#999;">13 Apr 2025</div>
+    <p class="isi-notif">Jangan lupa ikuti quiz minggu ini dan kumpulkan poin!</p>
   </div>
+  <p class="notif-content">Quiz mingguan hadir setiap Minggu dengan hadiah XP dan badge. Update terakhir: 13 Apr 2025.</p>
 
-  <!-- Notifikasi 3 -->
-  <div style="background:#fff; padding:12px 16px; border-left:4px solid #66bb6a; box-shadow:0 1px 5px rgba(0,0,0,0.03); position:relative;">
-    <div style="font-size:14px; font-weight:600; color:#222; border-bottom:1px solid #ddd; padding-bottom:4px; margin-bottom:4px;">
-      Challenge Harian
+  <div class="card-notif" onclick="toggleNotif(this)">
+    <div class="judul-notif">
+      Pembaruan utama apk plixlearn
+      <i class="fa-solid fa-chevron-down icon-toggle"></i>
     </div>
-    <p style="font-size:11px; color:#555; margin:0;">Selesaikan 5 latihan kosakata hari ini untuk bonus XP!</p>
-    <div style="position:absolute; top:10px; right:16px; font-size:10px; color:#999;">12 Apr 2025</div>
+    <p class="isi-notif">Selesaikan 5 latihan kosakata hari ini untuk bonus XP!</p>
   </div>
-
-  <!-- Notifikasi 4 -->
-  <div style="background:#fff; padding:12px 16px; border-left:4px solid #66bb6a; box-shadow:0 1px 5px rgba(0,0,0,0.03); position:relative;">
-    <div style="font-size:14px; font-weight:600; color:#222; border-bottom:1px solid #ddd; padding-bottom:4px; margin-bottom:4px;">
-      Pengumuman Leaderboard
-    </div>
-    <p style="font-size:11px; color:#555; margin:0;">Cek siapa yang jadi top 3 minggu ini di leaderboard nasional.</p>
-    <div style="position:absolute; top:10px; right:16px; font-size:10px; color:#999;">10 Apr 2025</div>
-  </div>
-
-  <!-- Notifikasi 5 -->
-  <div style="background:#fff; padding:12px 16px; border-left:4px solid #66bb6a; box-shadow:0 1px 5px rgba(0,0,0,0.03); position:relative;">
-    <div style="font-size:14px; font-weight:600; color:#222; border-bottom:1px solid #ddd; padding-bottom:4px; margin-bottom:4px;">
-      Maintenance Sistem
-    </div>
-    <p style="font-size:11px; color:#555; margin:0;">Aplikasi akan offline sementara pada 17 Apr 2025 jam 01:00–02:00 WIB.</p>
-    <div style="position:absolute; top:10px; right:16px; font-size:10px; color:#999;">09 Apr 2025</div>
-  </div>
+  <p class="notif-content">Sekarang kamu bisa dapatkan bonus XP dengan menyelesaikan target harian. Berlaku mulai 12 Apr 2025.</p>
 </div>
-  </template>
+</template>
 
-  <template id="tpl-options">
-    <div style="max-width:700px; margin:0 auto; padding:5px; font-family:sans-serif; display:flex; flex-direction:column; gap:12px;">
+ <template id="tpl-options">
+  <div class="container-option">
 
-  <!-- Card: Privasi -->
-  <div style="box-shadow:0 2px 10px rgba(0,0,0,0.05);">
-    <div style="background:#fff; padding:12px 16px; font-size:14px; font-weight:600; color:#333; display:flex; align-items:center; gap:8px;">
-      <i class="fa-solid fa-lock" style="width:16px;"></i> Privasi dan Keamanan
+    <div class="card-option">
+      <div class="card-header">
+        <i class="fa-solid fa-lock"></i> Privasi dan Keamanan
+      </div>
+      <div class="card-body">
+        Lindungi informasi pribadi Anda dengan pengaturan keamanan yang dapat disesuaikan. Kontrol izin akses aplikasi, aktifkan autentikasi tambahan, dan kelola data pribadi Anda dengan lebih aman.
+      </div>
     </div>
-    <div style="background:#f5f5f5; padding:12px 16px; font-size:13px; color:#555;">
-      Lindungi informasi pribadi Anda dengan pengaturan keamanan yang dapat disesuaikan. Kontrol izin akses aplikasi, aktifkan autentikasi tambahan, dan kelola data pribadi Anda dengan lebih aman.
-    </div>
-  </div>
 
- <!-- Card: Premium -->
-<div style="transition:transform 0.1s ease, box-shadow 0.1s ease;">
-  <div style="background:#fff; padding:12px 16px; font-size:14px; font-weight:600; color:#333; display:flex; align-items:center; gap:8px;">
-    <i class="fa-solid fa-crown" style="width:16px;"></i> Upgrade ke Premium
-  </div>
-  <div style="background:#f5f5f5; padding:12px 16px; font-size:13px; color:#555;">
-    Nikmati pengalaman belajar tanpa batas dengan fitur premium. mengunlock fitur dan support untuk Developer.
-    <div style="background:#f5f5f5;display:flex; gap:5px; margin-top:10px;">
-      <div class="btn-premium">Lihat premium</div>
-      <div class="btn-premium">Pesan premium</div>
+    <div class="card-option" style="transition:transform 0.1s ease, box-shadow 0.1s ease;">
+      <div class="card-header">
+        <i class="fa-solid fa-crown"></i> Upgrade ke Premium
+      </div>
+      <div class="card-body">
+        Nikmati pengalaman belajar tanpa batas dengan fitur premium. mengunlock fitur dan support untuk Developer.
+        <div class="btn-group">
+          <div class="btn-option">Lihat premium</div>
+          <div class="btn-option">Pesan premium</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-  <!-- Card: Tentang -->
-  <div style="box-shadow:0 2px 10px rgba(0,0,0,0.05);">
-    <div style="background:#fff; padding:12px 16px; font-size:14px; font-weight:600; color:#333; display:flex; align-items:center; gap:8px;">
-      <i class="fa-solid fa-circle-info" style="width:16px;"></i> Tentang Info Aplikasi
+    <div class="card-option">
+      <div class="card-header">
+        <i class="fa-solid fa-circle-info"></i> Tentang Info Aplikasi
+      </div>
+      <div class="card-body">
+        Aplikasi Versi: 1.0.0 - Developer: Tim PLIX - Hak cipta © 2025. Kami berkomitmen untuk terus menghadirkan fitur-fitur terbaik.
+      </div>
     </div>
-    <div style="background:#f5f5f5; padding:12px 16px; font-size:13px; color:#555;">
-      Aplikasi Versi: 1.0.0 - Developer: Tim PLIX - Hak cipta © 2025. Kami berkomitmen untuk terus menghadirkan fitur-fitur terbaik.
-    </div>
+
   </div>
-</div>
-  </template>
+</template>
   
   <div class="overlay" id="overlay"></div><div class="bottom-sheet" id="bottomSheet">
     <div class="handle" id="handle"></div>
-    <p>Ini adalah menu info yang muncul dari bawah, bisa diisi apa aja.</p>
+    <p>Info plixlearn by: plixteams present since 2025 coppyright. kami akan selalu mengembang plix menjadi yang terbaik lagi! gabung komunitas sekarang buka browser ketik berikut bit.ly/plixcom</p>
   </div>
   <div class="bottom-navbar">
     <div class="nav-item active" data-title="Plixlearn"><i class="fas fa-circle-h"></i></div>
@@ -430,6 +510,9 @@
     });
     loadContent('Plixlearn');
   </script>
+  <script>
+function toggleNotif(e){const t=e.closest(".card-notif"),n=document.querySelectorAll(".card-notif"),c=document.querySelectorAll(".notif-content"),o=t.nextElementSibling,r=t.classList.contains("active");n.forEach(e=>e.classList.remove("active")),c.forEach(e=>e.classList.remove("active")),r||(t.classList.add("active"),o.classList.add("active"))}
+</script>
 
 </body>
 </html>

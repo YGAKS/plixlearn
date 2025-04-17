@@ -8,10 +8,10 @@
     body {
       margin: 0;
       padding-top: 60px;
-      padding-bottom: 150px;
+      padding-bottom: 65px;
       background: #f0f0f0;
-      font-family: sans-serif;
       user-select: none;
+      font-family: sans-serif;
     }
 
     .top-navbar {
@@ -45,178 +45,136 @@
       text-transform: uppercase;
     }
 
-    .bottom-navbar {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #fff;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 15px 0;
-      z-index: 999;
-      animation: slideDownOut 0.8s ease-out forwards;
-    }
-
-    @keyframes slideDownOut {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100%);
-        opacity: 0;
-      }
-    }
-
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #333;
-      padding: 10px;
-      text-decoration: none;
-      font-size: 20px;
-      transition: all 0.3s ease;
-      border-radius: 20px;
-    }
-
-    .nav-item.active {
-      background: #333;
-      color: #fff;
-      padding: 10px 20px;
-    }
-
-    .selector-bar {
-      display: flex;
-      justify-content: center;
-      margin: 10px 0 20px;
-      gap: 10px;
-      text-align: center;
-      padding: 10px;
-    }
-
-    .selector-bar div {
-      flex: 1;
-      font-size: 20px;
-      font-weight: bold;
-      position: relative;
-      padding-bottom: 5px;
-      color: #555;
-    }
-
-    .selector-bar div.active::after,
-    .selector-bar div:hover::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 3px;
-      background: #bbb;
-      border-radius: 3px;
-    }
-
-    .table-container {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-      padding: 0 15px;
-    }
-
-    .char-box {
-      background: #fff;
-      text-align: center;
+    .content {
       padding: 15px;
-      font-size: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .cards-container {
-      display: flex;
-      flex-direction: column;
-      padding: 15px;
-      gap: 15px;
-    }
-
-    .level-card {
-      background: #fff;
-      padding: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .level-card h3 {
-      margin: 0px;
-      border-bottom: 1px #bbb solid;
-      font-size: 16px;
-      color: #555;
-    }
-
-    .level-card p {
-      font-size: 12px;
-      color: #666;
-      padding: 5px 0;
       margin: 0;
+    }
+
+    .hero-card {
+      background: #fdd835;
+      padding: 10px;
+      max-width: 700px;
+      font-family: sans-serif;
+      text-align: center;
+      margin: 0 auto 12px auto;
+      position: relative;
+    }
+
+    .hero-card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+      color: #333;
+    }
+
+    .hero-card p {
+      font-size: 12px;
+      margin: 0;
+      color: #555;
+    }
+
+    .hero-card .pin-icon {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .learn-container {
+      max-width: 700px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .learn-card {
+      background: #fff;
+      color: #333;
+      padding: 12px 16px;
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .learn-card:hover {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .learn-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .learn-card p {
+      margin: 4px 0 0;
+      color: #444;
+      font-size: 10px;
+    }
+
+    .icon-right {
+      float: right;
+      color: #666;
     }
   </style>
 </head>
 <body>
 
   <div class="top-navbar">
-    <div class="title" id="pageTitle">Learn Huruf</div>
+    <div class="title" id="pageTitle">PLIXLEARN</div>
     <div class="info-icon" id="infoToggle">
       <i class="fas fa-circle-xmark info-icon" onclick="window.location.href='https://ygaks.github.io/plixlearn/'"></i>
     </div>
   </div>
 
-  <!-- Selector -->
-  <div class="selector-bar">
-    <div class="selector-item active" onclick="switchContent('hiragana')">hiragana</div>
-    <div class="selector-item" onclick="switchContent('katakana')">katakana</div>
-  </div>
+  <div class="content">
 
-  <!-- Hiragana Content -->
-  <div id="hiraganaContent">
-    <div class="table-container">
-      <div class="char-box">あ</div><div class="char-box">い</div><div class="char-box">う</div><div class="char-box">え</div><div class="char-box">お</div>
-      <div class="char-box">か</div><div class="char-box">き</div><div class="char-box">く</div><div class="char-box">け</div><div class="char-box">こ</div>
+    <div class="hero-card">
+      <i class="fas fa-thumbtack pin-icon"></i>
+      <h2>HURUF & ANGKA</h2>
+      <p>Pelajari huruf Hiragana, Katakana, dan angka Jepang dengan metode menyenangkan dan interaktif di Plixlearn!</p>
     </div>
-    <div class="cards-container">
-      <div class="level-card"><h3>Mengenal</h3><p>Latihan dasar mengenal huruf</p></div>
-      <div class="level-card"><h3>Menghafal</h3><p>Latihan kombinasi sederhana</p></div>
-      <div class="level-card"><h3>Memahami</h3><p>Latihan menulis dan membaca</p></div>
-    </div>
-  </div>
 
-  <!-- Katakana Content -->
-  <div id="katakanaContent" style="display: none;">
-    <div class="table-container">
-      <div class="char-box">ア</div><div class="char-box">イ</div><div class="char-box">ウ</div><div class="char-box">エ</div><div class="char-box">オ</div>
-      <div class="char-box">カ</div><div class="char-box">キ</div><div class="char-box">ク</div><div class="char-box">ケ</div><div class="char-box">コ</div>
-    </div>
-    <div class="cards-container">
-      <div class="level-card"><h3>Easy</h3><p>Pengenalan huruf Katakana</p></div>
-      <div class="level-card"><h3>Normal</h3><p>Latihan kombinasi umum</p></div>
-      <div class="level-card"><h3>Hard</h3><p>Latihan konversi kalimat</p></div>
-    </div>
-  </div>
+    <div class="learn-container">
+      <div class="learn-card">
+        <h3>
+          Huruf Hiragana
+          <i class="fas fa-language icon-right"></i>
+        </h3>
+        <p>Pelajari karakter Hiragana yang digunakan untuk menulis kata-kata asli Jepang.</p>
+      </div>
 
-  <!-- Bottom Navbar -->
-  <div class="bottom-navbar">
-    <a href="#" class="nav-item active"><i class="fas fa-circle-h"></i></a>
-    <a href="#" class="nav-item"><i class="fas fa-bell"></i></a>
-    <a href="#" class="nav-item"><i class="fas fa-universal-access"></i></a>
+      <div class="learn-card">
+        <h3>
+          Huruf Katakana
+          <i class="fas fa-language icon-right"></i>
+        </h3>
+        <p>Kenali karakter Katakana yang biasa dipakai untuk menulis kata serapan dari bahasa asing.</p>
+      </div>
+
+      <div class="learn-card">
+        <h3>
+          Angka Jepang
+          <i class="fas fa-sort-numeric-up icon-right"></i>
+        </h3>
+        <p>Pelajari cara membaca dan menulis angka dalam sistem penulisan Jepang.</p>
+      </div>
+    </div>
   </div>
 
   <script>
-    function switchContent(type) {
-      document.querySelectorAll('.selector-item').forEach(el => el.classList.remove('active'));
-      document.getElementById('hiraganaContent').style.display = 'none';
-      document.getElementById('katakanaContent').style.display = 'none';
-
-      document.querySelector(`.selector-item[onclick="switchContent('${type}')"]`).classList.add('active');
-      document.getElementById(type + 'Content').style.display = 'block';
-    }
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("scrollY", window.scrollY);
+    });
+    window.addEventListener("load", () => {
+      const e = localStorage.getItem("scrollY");
+      e && window.scrollTo(0, parseInt(e));
+    });
+    setTimeout(() => { location.reload(); }, 5000);
   </script>
 
 </body>

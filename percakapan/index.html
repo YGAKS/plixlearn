@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    body {
+      margin: 0;
+      padding-top: 60px;
+      padding-bottom: 65px;
+      background: #f0f0f0;
+      user-select: none;
+      font-family: sans-serif;
+    }
+
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      z-index: 999;
+      box-sizing: border-box;
+    }
+
+    .top-navbar .info-icon {
+      font-size: 22px;
+      color: #333;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s;
+    }
+
+    .top-navbar .title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      text-transform: uppercase;
+    }
+    
+    @keyframes slideDownOut {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+    }
+
+    .bottom-navbar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 15px 0;
+      z-index: 999;
+      animation: slideDownOut 0.8s ease-out forwards;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #333;
+      padding: 10px;
+      text-decoration: none;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      border-radius: 20px;
+    }
+    
+     .nav-item.active {
+      background: #333;
+      color: #fff;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-navbar">
+    <div class="title" id="pageTitle">PERCAKAPAN</div>
+    <div class="info-icon" id="infoToggle">
+      <i class="fas fa-circle-xmark info-icon" onclick="window.location.href='https://ygaks.github.io/plixlearn/'"></i>
+    </div>
+  </div>
+
+  <!-- Bottom Navbar -->
+  <div class="bottom-navbar">
+    <a href="#" class="nav-item active"><i class="fas fa-circle-h"></i></a>
+    <a href="#" class="nav-item"><i class="fas fa-bell"></i></a>
+    <a href="#" class="nav-item"><i class="fas fa-universal-access"></i></a>
+  </div>
+
+</body>
+</html>

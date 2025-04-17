@@ -154,7 +154,12 @@
   background: #fff;
   color: #333;
   padding: 16px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.home-container .home-card:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 .home-container .home-card h3 {
   font-size: 16px;
@@ -185,6 +190,24 @@
   text-decoration: none;
   cursor: none;
 }
+
+.btn-premium {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  .btn-premium:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-premium {
+    background: #fff;
+    color: #333;
+  }
   </style>
 </head>
 <body>
@@ -307,7 +330,7 @@
 </div>
   </template>
 
-  <template id="tpl-settings">
+  <template id="tpl-options">
     <div style="max-width:700px; margin:0 auto; padding:5px; font-family:sans-serif; display:flex; flex-direction:column; gap:12px;">
 
   <!-- Card: Privasi -->
@@ -320,19 +343,19 @@
     </div>
   </div>
 
-  <!-- Card: Premium -->
-  <div style="box-shadow:0 2px 10px rgba(0,0,0,0.05);">
-    <div style="background:#fff; padding:12px 16px; font-size:14px; font-weight:600; color:#333; display:flex; align-items:center; gap:8px;">
-      <i class="fa-solid fa-crown" style="width:16px;"></i> Upgrade ke Premium
-    </div>
-    <div style="background:#f5f5f5; padding:12px 16px; font-size:13px; color:#555;">
-      Nikmati pengalaman belajar tanpa batas dengan fitur premium. mengunlock fitur dan support untuk Developer.
-      <div style="background:#f5f5f5;display:flex; gap:5px; margin-top:10px;">
-        <div style="flex:1; background:#e0e0e0; text-align:center; padding:8px;">Lihat permium</div>
-        <div style="flex:1; background:#333; color:#fff; text-align:center; padding:8px;">Pesan premium</div>
-      </div>
+ <!-- Card: Premium -->
+<div style="transition:transform 0.1s ease, box-shadow 0.1s ease;">
+  <div style="background:#fff; padding:12px 16px; font-size:14px; font-weight:600; color:#333; display:flex; align-items:center; gap:8px;">
+    <i class="fa-solid fa-crown" style="width:16px;"></i> Upgrade ke Premium
+  </div>
+  <div style="background:#f5f5f5; padding:12px 16px; font-size:13px; color:#555;">
+    Nikmati pengalaman belajar tanpa batas dengan fitur premium. mengunlock fitur dan support untuk Developer.
+    <div style="background:#f5f5f5;display:flex; gap:5px; margin-top:10px;">
+      <div class="btn-premium">Lihat premium</div>
+      <div class="btn-premium">Pesan premium</div>
     </div>
   </div>
+</div>
 
   <!-- Card: Tentang -->
   <div style="box-shadow:0 2px 10px rgba(0,0,0,0.05);">
@@ -353,7 +376,7 @@
   <div class="bottom-navbar">
     <div class="nav-item active" data-title="Plixlearn"><i class="fas fa-circle-h"></i></div>
     <div class="nav-item" data-title="Notifikasi"><i class="fas fa-bell"></i></div>
-    <div class="nav-item" data-title="Settings"><i class="fas fa-universal-access"></i></div>
+    <div class="nav-item" data-title="options"><i class="fas fa-universal-access"></i></div>
   </div>
 
   <script>

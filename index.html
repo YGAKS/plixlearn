@@ -54,7 +54,7 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      padding: 15px 0;
+      padding: 20px 0;
       z-index: 999;
       animation: slideUp 0.5s ease-out forwards;
     }
@@ -74,49 +74,48 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: #333;
-      padding: 10px;
+      background: #333;
+      color: #fff;
+      padding: 3px;
       text-decoration: none;
       font-size: 20px;
-      transition: all 0.3s ease;
+      transition: all 0.5s ease;
       border-radius: 20px;
     }
 
     .nav-item.active {
-      background: #333;
-      color: #fff;
-      padding: 10px 20px;
+      background: #fff;
+      color: #333;
+      scale: 1.3;
     }
 
     .nav-item:hover {
-      padding: 10px 20px;
     }
 
     .bottom-sheet {
       position: fixed;
-      bottom: -100%;
+      bottom: -50%;
       left: 0;
       right: 0;
       width: 100%;
-      background: #fff;
-      transition: bottom 0.8s ease-in-out;
+      background: #555;
+      transition: bottom 0.5s ease-in-out;
       z-index: 9;
       padding: 10px 20px;
-      margin-bottom: 50px;
-      font-size: 12px;
+      font-size: 10px;
       text-align: center;
-      color: #555;
+      color: #ddd;
       box-sizing: border-box;
     }
 
     .bottom-sheet.active {
-      bottom: 0;
+      bottom: 65px;
     }
 
     .handle {
       width: 40px;
       height: 5px;
-      background: #ccc;
+      background: #bbb;
       border-radius: 3px;
       margin: 0 auto 5px;
     }
@@ -137,7 +136,7 @@
 
     #content {
       box-sizing: border-box;
-      padding: 10px;
+      padding: 5px;
     }
     
 .home-container {
@@ -153,31 +152,36 @@
 .home-container .home-card {
   background: #fff;
   color: #333;
-  padding: 16px;
+  padding: 0;
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
+
 .home-container .home-card:hover {
   transform: translateY(2px);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
 }
+
 .home-container .home-card h3 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  color: #222;
+  color: #333;
+  background-color: #fff;
   margin: 0;
+  padding: 10px 16px;
   border-bottom: 1px solid #eee;
 }
 
 .home-container .home-card p {
-  margin: 4px 0 0;
-  color: #444;
-  font-size: 10px;
+  margin: 0;
+  padding: 10px 16px;
+  color: #555;
+  font-size: 12px;
 }
 
 .home-container .icon-right {
   float: right;
-  color: #666;
+  color: #555;
 }
 
 .home-container .grid-2 {
@@ -203,20 +207,16 @@
 
 .card-notif {
   background: #fff;
-  padding: 12px 16px;
+  padding: 15px;
   position: relative;
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
   transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
-.container-notif .card-notif:hover {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
 .judul-notif {
   font-size: 14px;
   font-weight: 600;
-  color: #222;
+  color: #333;
   border-bottom: 1px solid #ddd;
   padding-bottom: 4px;
   margin-bottom: 4px;
@@ -234,18 +234,18 @@
 }
 
 .isi-notif {
-  font-size: 11px;
+  font-size: 12px;
   color: #555;
   margin: 0;
 }
 
 .notif-content {
-  background: #fdd835;
+  background: #f9a825;
   max-height: 0;
   overflow-y: hidden;
   transition: max-height 0.3s ease, padding 0.2s ease, border-color 0.3s ease;
   font-size: 12px;
-  color: #444;
+  color: #fff;
   padding: 0 12px;
   margin: 0 0 12px 0;
 }
@@ -278,14 +278,14 @@
   color: #333;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
 }
 
 .card-body {
-  background: #f5f5f5;
+  background: #f9a825;
   padding: 12px 16px;
-  font-size: 13px;
-  color: #555;
+  font-size: 12px;
+  color: #fff;
 }
 
 .btn-group {
@@ -321,64 +321,17 @@
   </div>
   <div id="content"></div>
 <template id="tpl-plixlearn">
-    <div class="home-container">
-        <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/game'">
-                <h3>
-                    Games Ujian Bahasa Jepang
-                    <i class="fa-solid fa-gamepad icon-right"></i>
-                </h3>
-                <p>Mainkan mini game sambil menguji kemampuan bahasa Jepangmu.</p>
-        </div>
-        <div class="grid-2">
-            <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/alfabet'">
-                    <h3>
-                        Huruf-angka
-                        <i class="fa-solid fa-bookmark icon-right"></i>
-                    </h3>
-                    <p>Pelajari hiragana dan katakana  interaktif beserta angka.</p>
-            </div>
-
-            <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/percakapan'">
-                    <h3>
-                        Percakapan
-                        <i class="fa-solid fa-bookmark icon-right"></i>
-                    </h3>
-                    <p>Latihan dialog sehari-hari dengan audio asli.</p>
-            </div>
-            
-            <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/kosakata'">
-                    <h3>
-                        Kosakata
-                        <i class="fa-solid fa-bookmark icon-right"></i>
-                    </h3>
-                    <p>Belajari kosakata Jepang dari dasar hingga mahir.</p>
-            </div>
-
-            <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/kanji'">
-                    <h3>
-                        Karakter Kanji
-                        <i class="fa-solid fa-bookmark icon-right"></i>
-                    </h3>
-                    <p>Latihan stroke dan makna kanji secara bertahap.</p>
-            </div>
-
-            <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/tatabahasa'">
-                    <h3>
-                        Tata Bahasa
-                        <i class="fa-solid fa-bookmark icon-right"></i>
-                    </h3>
-                    <p>Pola kalimat dan struktur grammar Jepang.</p>
-            </div>
-
-            <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/jlpt'">
-                    <h3>
-                        Ulangan JLPT
-                        <i class="fa-solid fa-bookmark icon-right"></i>
-                    </h3>
-                    <p>Simulasi soal JLPT dari N5 sampai N1.</p>
-            </div>
-        </div>
-    </div>
+<div class="home-container">
+  <div class="home-card" style="background:#f9a825;box-shadow:0 4px 0 #e59500" onclick="window.location.href='https://ygaks.github.io/plixlearn/game'"><h3 class="card-title" style="border-bottom:2px solid #e59500">Games Ujian Bahasa Jepang<i class="fa-solid fa-gamepad icon-right"></i></h3><p>Mainkan mini game sambil menguji kemampuan bahasa Jepangmu.</p></div>
+  <div class="grid-2">
+    <div class="home-card" style="background:#a5d6a7;box-shadow:0 4px 0 #81c784" onclick="window.location.href='https://ygaks.github.io/plixlearn/alfabet'"><h3 class="card-title" style="border-bottom:2px solid #81c784">Huruf-angka<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Pelajari hiragana dan katakana interaktif beserta angka.</p></div>
+    <div class="home-card" style="background:#90caf9;box-shadow:0 4px 0 #64b5f6" onclick="window.location.href='https://ygaks.github.io/plixlearn/percakapan'"><h3 class="card-title" style="border-bottom:2px solid #64b5f6">Percakapan<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Latihan dialog sehari-hari dengan audio asli.</p></div>
+    <div class="home-card" style="background:#fdd835;box-shadow:0 4px 0 #fbc02d" onclick="window.location.href='https://ygaks.github.io/plixlearn/kosakata'"><h3 class="card-title" style="border-bottom:2px solid #fbc02d">Kosakata<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Belajari kosakata Jepang dari dasar hingga mahir.</p></div>
+    <div class="home-card" style="background:#ffb74d;box-shadow:0 4px 0 #ffa726" onclick="window.location.href='https://ygaks.github.io/plixlearn/kanji'"><h3 class="card-title" style="border-bottom:2px solid #ffa726">Karakter Kanji<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Latihan stroke dan makna kanji secara bertahap.</p></div>
+    <div class="home-card" style="background:#ef9a9a;box-shadow:0 4px 0 #e57373" onclick="window.location.href='https://ygaks.github.io/plixlearn/tatabahasa'"><h3 class="card-title" style="border-bottom:2px solid #e57373">Tata Bahasa<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Pola kalimat dan struktur grammar Jepang.</p></div>
+    <div class="home-card" style="background:#ce93d8;box-shadow:0 4px 0 #ba68c8" onclick="window.location.href='https://ygaks.github.io/plixlearn/jlpt'"><h3 class="card-title" style="border-bottom:2px solid #ba68c8">Ulangan JLPT<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Simulasi soal JLPT dari N5 sampai N1.</p></div>
+  </div>
+</div>
 </template>
 
   <template id="tpl-notifikasi">
@@ -390,7 +343,7 @@
     </div>
     <p class="isi-notif">Riwayat pemabaruan materi terdahulu atau terbaru.</p>
   </div>
-  <p class="notif-content">• Huruf - angka content 17 apr 2025<br>• Huruf - content karakter kanji 17 apr 2025<br>• Kosakata content 17 apr 2025<br>• Tatabahasa content 17 apr 2025<br>• Ulangan jplt content 17 apr 2025<br>• Percakapan content 17 apr 2025</p>
+  <p class="notif-content">• upadte semua content pemebelajaran huruf hingga kanji 30 Apr 2025</p>
 
   <div class="card-notif" onclick="toggleNotif(this)">
     <div class="judul-notif">
@@ -455,7 +408,7 @@
   </div>
   <div class="bottom-navbar">
     <div class="nav-item active" data-title="Plixlearn"><i class="fas fa-circle-h"></i></div>
-    <div class="nav-item" data-title="Notifikasi"><i class="fas fa-bell"></i></div>
+    <div class="nav-item" data-title="Notifikasi"><i class="fas fa-circle-chevron-up"></i></div>
     <div class="nav-item" data-title="options"><i class="fas fa-universal-access"></i></div>
   </div>
 

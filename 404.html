@@ -10,8 +10,9 @@
       padding-top: 60px;
       padding-bottom: 65px;
       background: #f0f0f0;
-      user-select: none;
       font-family: sans-serif;
+      overflow-x: hidden;
+      overscroll-behavior: contain;
     }
 
     .top-navbar {
@@ -45,16 +46,47 @@
       text-transform: uppercase;
     }
 
+    .pull-indicator {
+      position: fixed;
+      top: 10px;
+      left: 0;
+      right: 0;
+      height: 35px;
+      width: 35px;
+      display: flex;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      border-radius: 50%;
+      z-index: 998;
+      transform: translateY(-100%);
+      transition: transform 0.5s ease-out;
+    }
+
+    .pull-indicator i {
+      font-size: 20px;
+      color: #333;
+      animation: none;
+    }
+
+    .pull-indicator.refreshing i {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     .content {
       padding: 15px;
-      margin: 0;
     }
 
     .hero-card {
       background: #fdd835;
       padding: 10px;
       max-width: 700px;
-      font-family: sans-serif;
       text-align: center;
       margin: 0 auto 12px auto;
       position: relative;
@@ -81,22 +113,8 @@
       color: #333;
     }
 
-    .learn-container {
-      max-width: 700px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    
-    .learn-container a {
-      text-decoration: none;
-      cursor: none;
-    }
-
     .learn-card {
       background: #fff;
-      color: #333;
       padding: 12px 16px;
       box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
       transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -106,46 +124,30 @@
       transform: translateY(2px);
       box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
     }
-
-    .learn-card h3 {
-      font-size: 14px;
-      font-weight: 600;
-      color: #333;
-      margin: 0;
-      border-bottom: 1px solid #eee;
-    }
-
-    .learn-card p {
-      margin: 4px 0 0;
-      color: #444;
-      font-size: 10px;
-    }
-
-    .icon-right {
-      float: right;
-      color: #666;
-    }
   </style>
 </head>
 <body>
 
   <div class="top-navbar">
-    <div class="title" id="pageTitle">404</div>
-    <div class="info-icon" id="infoToggle">
-      <i class="fas fa-circle-xmark info-icon" onclick="history.back()"></i>
+    <div class="title">404</div>
+    <div class="info-icon">
+      <i class="fas fa-circle-xmark" onclick="history.back()"></i>
     </div>
+  </div>
+
+  <div class="pull-indicator" id="pullIndicator">
+    <i class="fas fa-arrow-down"></i>
   </div>
 
   <div class="content">
-
     <div class="hero-card">
       <i class="fas fa-thumbtack pin-icon"></i>
       <h2>Halaman 404</h2>
-      <p>Masih dalam pemgembangan</p>
+      <p>Masih dalam pengembangan</p>
     </div>
   </div>
 
-  <script>
+ <script>
     window.addEventListener("beforeunload", () => {
       localStorage.setItem("scrollY", window.scrollY);
     });
@@ -153,8 +155,11 @@
       const e = localStorage.getItem("scrollY");
       e && window.scrollTo(0, parseInt(e));
     });
-    setTimeout(() => { location.reload(); }, 1000);
+    setTimeout(() => { location.reload(); }, 2500);
   </script>
+  <script>
+let startY=0,isPulling=false,pulling=false,threshold=50,indicator=document.getElementById("pullIndicator"),icon=indicator.querySelector("i");document.addEventListener("touchstart",e=>{if(window.scrollY<=0){startY=e.touches[0].clientY,isPulling=true}}),document.addEventListener("touchmove",e=>{if(!isPulling)return;const t=e.touches[0].clientY,d=t-startY;if(d>0&&window.scrollY<=0){pulling=true,e.preventDefault(),indicator.style.transition="none",indicator.style.transform=`translateY(${Math.min(d,80)}px)`,d>threshold?icon.classList.replace("fa-arrow-down","fa-rotate-right"):icon.classList.replace("fa-rotate-right","fa-arrow-down")}}, {passive:!1}),document.addEventListener("touchend",()=>{if(!pulling){isPulling=false;return}const e=parseFloat(indicator.style.transform.replace("translateY(",""));indicator.style.transition="transform 0.5s ease-out",e>threshold?(icon.classList.replace("fa-arrow-down","fa-rotate-right"),indicator.classList.add("refreshing"),indicator.style.transform="translateY(50px)",setTimeout(()=>{location.reload()},700)):(indicator.style.transform="translateY(-100%)",icon.classList.replace("fa-rotate-right","fa-arrow-down")),isPulling=false,pulling=false});
+</script>
 
 </body>
 </html>

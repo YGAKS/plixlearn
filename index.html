@@ -414,56 +414,78 @@
   </div>
 
   <script>
-    const infoToggle = document.getElementById('infoToggle');
-    const infoIcon = document.getElementById('infoIcon');
-    const bottomSheet = document.getElementById('bottomSheet');
-    const overlay = document.getElementById('overlay');
-    const handle = document.getElementById('handle');
-    const pageTitle = document.getElementById('pageTitle');
-    const navItems = document.querySelectorAll('.nav-item');
-    const content = document.getElementById('content');
-    let isOpen = false;
+const infoToggle = document.getElementById('infoToggle');
+const infoIcon = document.getElementById('infoIcon');
+const bottomSheet = document.getElementById('bottomSheet');
+const overlay = document.getElementById('overlay');
+const handle = document.getElementById('handle');
+const pageTitle = document.getElementById('pageTitle');
+const navItems = document.querySelectorAll('.nav-item');
+const content = document.getElementById('content');
+let isOpen = false;
+let currentPage = ""; // NEW: Track current page
 
-    infoToggle.addEventListener('click', () => {
-      isOpen = !isOpen;
-      bottomSheet.classList.toggle('active');
-      overlay.classList.toggle('active');
-      infoIcon.classList.toggle('fa-info-circle', !isOpen);
-      infoIcon.classList.toggle('fa-circle-xmark', isOpen);
-    });
+infoToggle.addEventListener('click', () => {
+  isOpen = !isOpen;
+  bottomSheet.classList.toggle('active');
+  overlay.classList.toggle('active');
+  infoIcon.classList.toggle('fa-info-circle', !isOpen);
+  infoIcon.classList.toggle('fa-circle-xmark', isOpen);
+});
 
-    overlay.addEventListener('click', () => {
-      bottomSheet.classList.remove('active');
-      overlay.classList.remove('active');
-      infoIcon.classList.remove('fa-circle-xmark');
-      infoIcon.classList.add('fa-info-circle');
-      isOpen = false;
-    });
+overlay.addEventListener('click', () => {
+  bottomSheet.classList.remove('active');
+  overlay.classList.remove('active');
+  infoIcon.classList.remove('fa-circle-xmark');
+  infoIcon.classList.add('fa-info-circle');
+  isOpen = false;
+});
 
-    bottomSheet.addEventListener('click', (event) => event.stopPropagation());
-    handle.addEventListener('click', (event) => event.stopPropagation());
+bottomSheet.addEventListener('click', (event) => event.stopPropagation());
+handle.addEventListener('click', (event) => event.stopPropagation());
 
-    function loadContent(page) {
-      const templateId = `tpl-${page.toLowerCase()}`;
-      const template = document.getElementById(templateId);
-      if (template) {
-        content.innerHTML = template.innerHTML;
-      } else {
-        content.innerHTML = `<p>Konten tidak ditemukan.</p>`;
+function loadContent(page, addToHistory = true) {
+  if (page.toLowerCase() === currentPage.toLowerCase()) return; // Prevent duplicate push
+  const templateId = `tpl-${page.toLowerCase()}`;
+  const template = document.getElementById(templateId);
+  if (template) {
+    content.innerHTML = template.innerHTML;
+    pageTitle.textContent = page;
+    currentPage = page; // Update current page
+
+    navItems.forEach(i => {
+      i.classList.remove('active');
+      if (i.getAttribute('data-title') === page) {
+        i.classList.add('active');
       }
-    }
-
-    navItems.forEach(item => {
-      item.addEventListener('click', () => {
-        navItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-        const newTitle = item.getAttribute('data-title');
-        pageTitle.textContent = newTitle;
-        loadContent(newTitle);
-      });
     });
-    loadContent('Plixlearn');
-  </script>
+
+    if (addToHistory) {
+      history.pushState({ page }, "", `#${page.toLowerCase()}`);
+    }
+  } else {
+    content.innerHTML = `<p>Konten tidak ditemukan.</p>`;
+  }
+}
+
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const newTitle = item.getAttribute('data-title');
+    loadContent(newTitle, true);
+  });
+});
+
+window.onpopstate = (e) => {
+  if (e.state && e.state.page) {
+    loadContent(e.state.page, false);
+  } else {
+    loadContent("Plixlearn", false);
+  }
+};
+
+const initialPage = location.hash ? location.hash.substring(1) : "plixlearn";
+loadContent(initialPage.charAt(0).toUpperCase() + initialPage.slice(1));
+</script>
   <script>
 function toggleNotif(e){const t=e.closest(".card-notif"),n=document.querySelectorAll(".card-notif"),c=document.querySelectorAll(".notif-content"),o=t.nextElementSibling,r=t.classList.contains("active");n.forEach(e=>e.classList.remove("active")),c.forEach(e=>e.classList.remove("active")),r||(t.classList.add("active"),o.classList.add("active"))}
 </script>

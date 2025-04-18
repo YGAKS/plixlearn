@@ -56,7 +56,7 @@
       align-items: center;
       padding: 15px 0;
       z-index: 999;
-      animation: slideUp 0.3s ease-out forwards;
+      animation: slideUp 0.5s ease-out forwards;
     }
     
     @keyframes slideUp {
@@ -308,23 +308,6 @@
   transform: translateY(2px);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
 }
-.top-notif {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #fdd835;
-  color: #333;
-  font-size: 10px;
-  text-align: center;
-  padding: 2px 10px;
-  z-index: 1000;
-  transition: top 0.5s ease;
-  z-index: 100;
-}
-
-.top-notif.show {
-  top: 55px;
-}
   </style>
 </head>
 <body>
@@ -336,9 +319,6 @@
       <i class="fas fa-info-circle" id="infoIcon"></i>
     </div>
   </div>
-  <div class="top-notif" id="topNotif">
-  OHAYOO! selamat belajar! yah capai mimpimu - apk version 3.0.
-</div>
   <div id="content"></div>
 <template id="tpl-plixlearn">
     <div class="home-container">
@@ -532,15 +512,6 @@
   </script>
   <script>
 function toggleNotif(e){const t=e.closest(".card-notif"),n=document.querySelectorAll(".card-notif"),c=document.querySelectorAll(".notif-content"),o=t.nextElementSibling,r=t.classList.contains("active");n.forEach(e=>e.classList.remove("active")),c.forEach(e=>e.classList.remove("active")),r||(t.classList.add("active"),o.classList.add("active"))}
-</script>
-<script>
-  window.addEventListener('load', () => {
-  const topNotif = document.getElementById('topNotif');
-  topNotif.classList.add('show');
-  setTimeout(() => {
-    topNotif.classList.remove('show');
-  }, 5000);
-});
 </script>
 
 </body>

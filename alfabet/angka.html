@@ -4,15 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding-top: 60px;
+      padding-bottom: 65px;
       background: #f0f0f0;
+      user-select: none;
       font-family: sans-serif;
-      overflow-x: hidden;
-      overscroll-behavior: contain;
     }
 
     .top-navbar {
@@ -46,6 +45,11 @@
       text-transform: uppercase;
     }
 
+    .content {
+      padding: 15px;
+      margin: 0;
+    }
+
     .pull-indicator {
       position: fixed;
       top: 10px;
@@ -58,8 +62,8 @@
       justify-content: center;
       align-items: center;
       background: #fff;
-      z-index: 998;
       border-radius: 50%;
+      z-index: 998;
       transform: translateY(-100%);
       transition: transform 0.5s ease-out;
     }
@@ -79,17 +83,11 @@
       100% { transform: rotate(360deg); }
     }
 
-.content {
-  padding: 10px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-sizing: border-box;
-}
-
     .hero-card {
       background: #fdd835;
       padding: 10px;
       max-width: 700px;
+      font-family: sans-serif;
       text-align: center;
       margin: 0 auto 12px auto;
       position: relative;
@@ -116,36 +114,63 @@
       color: #333;
     }
 
-    .hiragana-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-      gap: 5px;
+    .learn-container {
       max-width: 700px;
-      text-align: center;
-      margin-bottom: 10px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
     }
 
-    .hiragana-grid div {
+    .learn-card {
       background: #fff;
-      padding: 5px;
-      font-size: 10px;
-      font-weight: bold;
-      color: #fdd835;
+      color: #333;
+      padding: 12px 16px;
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
     }
 
-    .hiragana-grid strong {
-      display: block;
-      font-size: 15px;
-      color: #222;
-      font-family: 'Noto Sans JP', sans-serif;
+    .learn-card:hover {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
     }
-a  </style>
+
+    .learn-card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .learn-card .card-content {
+      margin-top: 8px;
+      display: none;
+      font-size: 12px;
+    }
+
+    .learn-card .grid p {
+      margin: 4px 0;
+      padding-left: 8px;
+      background-color: #fdd835;
+    }
+
+    .icon-right {
+      transition: transform 0.3s ease;
+    }
+
+    .icon-rotate {
+      transform: rotate(180deg);
+    }
+  </style>
 </head>
 <body>
 
   <div class="top-navbar">
-    <div class="title">PLIXLEARN</div>
-    <div class="info-icon">
+    <div class="title" id="pageTitle">PLIXLEARN</div>
+    <div class="info-icon" id="infoToggle">
       <i class="fas fa-circle-xmark" onclick="history.back()"></i>
     </div>
   </div>
@@ -155,49 +180,125 @@ a  </style>
   </div>
 
   <div class="content">
-  <div class="hero-card">
-    <i class="fas fa-thumbtack pin-icon"></i>
-    <h2>Angka Jepang</h2>
-    <p>Angka dalam bahasa Jepang membentuk pola logis: satuan (1–9), puluhan (10–90), dan ratusan (100+). Gabungan angka mengikuti urutan pengucapan Jepang.</p>
+    <div class="hero-card">
+      <i class="fas fa-thumbtack pin-icon"></i>
+      <h2>Angka Jepang</h2>
+      <p>Angka dalam bahasa Jepang membentuk pola logis: satuan (1–9), puluhan (10–90), dan ratusan (100+). Gabungan angka mengikuti urutan pengucapan Jepang.</p>
+    </div>
+
+    <div class="learn-container">
+
+      <!-- Puluhan -->
+      <div class="learn-card" onclick="toggleCard(this)">
+        <h3>Puluhan <i class="fas fa-chevron-down icon-right"></i></h3>
+        <div class="card-content">
+          <div class="grid">
+            <p>10 — 十 (juu)</p>
+            <p>20 — 二十 (ni-juu)</p>
+            <p>30 — 三十 (san-juu)</p>
+            <p>40 — 四十 (yon-juu)</p>
+            <p>50 — 五十 (go-juu)</p>
+            <p>60 — 六十 (roku-juu)</p>
+            <p>70 — 七十 (nana-juu)</p>
+            <p>80 — 八十 (hachi-juu)</p>
+            <p>90 — 九十 (kyuu-juu)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ratusan -->
+      <div class="learn-card" onclick="toggleCard(this)">
+        <h3>Ratusan <i class="fas fa-chevron-down icon-right"></i></h3>
+        <div class="card-content">
+          <div class="grid">
+            <p>100 — 百 (hyaku)</p>
+            <p>200 — 二百 (ni-hyaku)</p>
+            <p>300 — 三百 (san-byaku)</p>
+            <p>400 — 四百 (yon-hyaku)</p>
+            <p>500 — 五百 (go-hyaku)</p>
+            <p>600 — 六百 (roppyaku)</p>
+            <p>700 — 七百 (nana-hyaku)</p>
+            <p>800 — 八百 (happyaku)</p>
+            <p>900 — 九百 (kyuu-hyaku)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jutaan -->
+      <div class="learn-card" onclick="toggleCard(this)">
+        <h3>Jutaan <i class="fas fa-chevron-down icon-right"></i></h3>
+        <div class="card-content">
+          <div class="grid">
+            <p>1.000.000 — 百万 (hyaku-man)</p>
+            <p>2.000.000 — 二百万 (ni-hyaku-man)</p>
+            <p>3.000.000 — 三百万 (san-byaku-man)</p>
+            <p>4.000.000 — 四百万 (yon-hyaku-man)</p>
+            <p>5.000.000 — 五百万 (go-hyaku-man)</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <script>
-    let startY=0,isPulling=false,pulling=false,threshold=50,indicator=document.getElementById("pullIndicator"),icon=indicator.querySelector("i");
-    document.addEventListener("touchstart",e=>{
-      if(window.scrollY<=0){
-        startY=e.touches[0].clientY;
-        isPulling=true;
+    function toggleCard(card) {
+      const content = card.querySelector(".card-content");
+      const icon = card.querySelector(".icon-right");
+      const isVisible = content.style.display === "block";
+
+      document.querySelectorAll(".card-content").forEach(el => el.style.display = "none");
+      document.querySelectorAll(".icon-right").forEach(el => el.classList.remove("icon-rotate"));
+
+      if (!isVisible) {
+        content.style.display = "block";
+        icon.classList.add("icon-rotate");
+      }
+    }
+
+    // Pull to refresh
+    let startY = 0, isPulling = false, pulling = false, threshold = 50;
+    const indicator = document.getElementById("pullIndicator");
+    const icon = indicator.querySelector("i");
+
+    document.addEventListener("touchstart", e => {
+      if (window.scrollY <= 0) {
+        startY = e.touches[0].clientY;
+        isPulling = true;
       }
     });
-    document.addEventListener("touchmove",e=>{
-      if(!isPulling)return;
-      const t=e.touches[0].clientY,d=t-startY;
-      if(d>0&&window.scrollY<=0){
-        pulling=true;
+
+    document.addEventListener("touchmove", e => {
+      if (!isPulling) return;
+      const t = e.touches[0].clientY;
+      const d = t - startY;
+      if (d > 0 && window.scrollY <= 0) {
+        pulling = true;
         e.preventDefault();
-        indicator.style.transition="none";
-        indicator.style.transform=`translateY(${Math.min(d,80)}px)`;
-        d>threshold?icon.classList.replace("fa-arrow-down","fa-rotate-right"):icon.classList.replace("fa-rotate-right","fa-arrow-down");
+        indicator.style.transition = "none";
+        indicator.style.transform = `translateY(${Math.min(d, 80)}px)`;
+        d > threshold ? icon.classList.replace("fa-arrow-down", "fa-rotate-right") : icon.classList.replace("fa-rotate-right", "fa-arrow-down");
       }
-    }, {passive:!1});
-    document.addEventListener("touchend",()=>{
-      if(!pulling){
-        isPulling=false;
+    }, { passive: false });
+
+    document.addEventListener("touchend", () => {
+      if (!pulling) {
+        isPulling = false;
         return;
       }
-      const e=parseFloat(indicator.style.transform.replace("translateY(",""));
-      indicator.style.transition="transform 0.5s ease-out";
-      if(e>threshold){
-        icon.classList.replace("fa-arrow-down","fa-rotate-right");
+      const e = parseFloat(indicator.style.transform.replace("translateY(", ""));
+      indicator.style.transition = "transform 0.5s ease-out";
+      if (e > threshold) {
+        icon.classList.replace("fa-arrow-down", "fa-rotate-right");
         indicator.classList.add("refreshing");
-        indicator.style.transform="translateY(50px)";
-        setTimeout(()=>{location.reload()},700);
+        indicator.style.transform = "translateY(50px)";
+        setTimeout(() => location.reload(), 700);
       } else {
-        indicator.style.transform="translateY(-100%)";
-        icon.classList.replace("fa-rotate-right","fa-arrow-down");
+        indicator.style.transform = "translateY(-100%)";
+        icon.classList.replace("fa-rotate-right", "fa-arrow-down");
       }
-      isPulling=false;
-      pulling=false;
+      isPulling = false;
+      pulling = false;
     });
   </script>
 

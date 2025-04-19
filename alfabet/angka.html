@@ -8,6 +8,7 @@
     body {
       margin: 0;
       padding-top: 60px;
+      padding-bottom: 65px;
       background: #f0f0f0;
       user-select: none;
       font-family: sans-serif;
@@ -150,10 +151,16 @@
     }
 
     .learn-card .card-content {
-      margin-top: 5px;
-      display: none;
-      font-size: 12px;
-    }
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.card-content.show {
+  opacity: 1;
+  max-height: 500px; /* cukup besar biar semua konten bisa muncul */
+}
 
     .grid p {
       display: flex;
@@ -292,18 +299,24 @@
 
   <script>
     function toggleCard(card) {
-      const content = card.querySelector(".card-content");
-      const icon = card.querySelector(".icon-right");
-      const isVisible = content.style.display === "block";
+  const content = card.querySelector(".card-content");
+  const icon = card.querySelector(".icon-right");
+  const isVisible = content.classList.contains("show");
 
-      document.querySelectorAll(".card-content").forEach(el => el.style.display = "none");
-      document.querySelectorAll(".icon-right").forEach(el => el.classList.remove("icon-rotate"));
+  // Tutup semua card yang sedang terbuka
+  document.querySelectorAll(".card-content.show").forEach(el => {
+    el.classList.remove("show");
+    el.previousElementSibling?.querySelector(".icon-right")?.classList.remove("icon-rotate");
+  });
 
-      if (!isVisible) {
-        content.style.display = "block";
-        icon.classList.add("icon-rotate");
-      }
-    }
+  // Jika yang diklik tadi tidak sedang terbuka, buka dia
+  if (!isVisible) {
+    setTimeout(() => {
+      content.classList.add("show");
+      icon.classList.add("icon-rotate");
+    }, 100); // delay sedikit biar smooth transisinya
+  }
+}
 
     // Pull to refresh
     let startY = 0, isPulling = false, pulling = false, threshold = 50;

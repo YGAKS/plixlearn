@@ -309,6 +309,20 @@
   transform: translateY(2px);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
 }
+
+.video-content {
+    background-color: #fff;
+    max-width: 960px;
+    margin: auto;
+}
+
+.video-content iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: none;
+    display: block;
+}
   </style>
 </head>
 <body>
@@ -322,16 +336,15 @@
   </div>
   <div id="content"></div>
 <template id="tpl-plixlearn">
-<div class="home-container">
-  <div class="home-card" style="background:#f9a825;box-shadow:0 4px 0 #e59500" onclick="window.location.href='https://ygaks.github.io/plixlearn/game'"><h3 class="card-title" style="border-bottom:2px solid #e59500">Games Ujian Bahasa Jepang<i class="fa-solid fa-gamepad icon-right"></i></h3><p>Mainkan mini game sambil menguji kemampuan bahasa Jepangmu.</p></div>
-  <div class="grid-2">
-    <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/alfabet'"><h3 class="card-title">Huruf-angka<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Pelajari hiragana dan katakana interaktif beserta angka.</p></div>
-    <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/percakapan'"><h3 class="card-title">Percakapan<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Latihan dialog sehari-hari dengan suara bahasa japan.</p></div>
-    <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/kosakata'"><h3 class="card-title">Kosakata<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Belajari kosakata Jepang dari dasar hingga mahir.</p></div>
-    <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/kanji'"><h3 class="card-title">Karakter Kanji<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Latihan stroke dan makna kanji secara bertahap.</p></div>
-    <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/tatabahasa'"><h3 class="card-title">Tata Bahasa<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Pola kalimat dan struktur grammar Jepang.</p></div>
-    <div class="home-card" onclick="window.location.href='https://ygaks.github.io/plixlearn/jlpt'"><h3 class="card-title">Ulangan JLPT<i class="fa-solid fa-bookmark icon-right"></i></h3><p>Ulangan simulasi tentang soal JLPT dari N5 sampai N1.</p></div>
-  </div>
+ <div class="video-content">
+    <iframe allowfullscreen
+            class="b-hbp-video b-uploaded"
+            frameborder="0"
+            id="BLOGGER-video-94802a6d41fcc987-17650"
+            src="https://desustream.info/dstream/ondesu/index.php?id=TlZkY0FQU0FGaGJ4anlBcysybnRjdz09"
+            mozallowfullscreen
+            webkitallowfullscreen">
+    </iframe>
 </div>
 </template>
 

@@ -9,7 +9,6 @@
     body {
       margin: 0;
       padding-top: 60px;
-      padding-bottom: 65px;
       background: #f0f0f0;
       font-family: sans-serif;
       overflow-x: hidden;
@@ -80,9 +79,12 @@
       100% { transform: rotate(360deg); }
     }
 
-    .content {
-      padding: 15px;
-    }
+.content {
+  padding: 10px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
 
     .hero-card {
       background: #fdd835;

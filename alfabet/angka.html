@@ -8,7 +8,6 @@
     body {
       margin: 0;
       padding-top: 60px;
-      padding-bottom: 65px;
       background: #f0f0f0;
       user-select: none;
       font-family: sans-serif;
@@ -46,7 +45,7 @@
     }
 
     .content {
-      padding: 15px;
+      padding: 10px;
       margin: 0;
     }
 
@@ -115,7 +114,6 @@
     }
 
     .learn-container {
-      max-width: 700px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr;
@@ -125,7 +123,7 @@
     .learn-card {
       background: #fff;
       color: #333;
-      padding: 12px 16px;
+      padding: 10px;
       box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
       transition: transform 0.1s ease, box-shadow 0.1s ease;
     }
@@ -145,16 +143,45 @@
       align-items: center;
     }
 
+    .learn-card .card-desc {
+      font-size: 12px;
+      margin: 5px 0 0;
+      color: #777;
+    }
+
     .learn-card .card-content {
-      margin-top: 8px;
+      margin-top: 5px;
       display: none;
       font-size: 12px;
     }
 
-    .learn-card .grid p {
-      margin: 4px 0;
-      padding-left: 8px;
-      background-color: #fdd835;
+    .grid p {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+      font-size: 12px;
+      gap: 5px;
+    }
+
+    .grid .angka {
+      background-color: #ffe082;
+      flex: 1;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .grid .kanji {
+      background-color: #ce93d8;
+      flex: 1;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .grid .romaji {
+      background-color: #80cbc4;
+      flex: 1;
+      padding: 5px;
+      text-align: center;
     }
 
     .icon-right {
@@ -187,21 +214,41 @@
     </div>
 
     <div class="learn-container">
+      
+      <!-- Satuan -->
+<div class="learn-card" onclick="toggleCard(this)">
+  <h3>Satuan <i class="fas fa-chevron-down icon-right"></i></h3>
+  <p class="card-desc">Angka dasar dari 1 hingga 9. Digunakan sebagai dasar dalam penyebutan angka lain.</p>
+  <div class="card-content">
+    <div class="grid">
+      <p><span class="angka">1</span><span class="kanji">一</span><span class="romaji">ichi</span></p>
+      <p><span class="angka">2</span><span class="kanji">二</span><span class="romaji">ni</span></p>
+      <p><span class="angka">3</span><span class="kanji">三</span><span class="romaji">san</span></p>
+      <p><span class="angka">4</span><span class="kanji">四</span><span class="romaji">yon</span></p>
+      <p><span class="angka">5</span><span class="kanji">五</span><span class="romaji">go</span></p>
+      <p><span class="angka">6</span><span class="kanji">六</span><span class="romaji">roku</span></p>
+      <p><span class="angka">7</span><span class="kanji">七</span><span class="romaji">nana</span></p>
+      <p><span class="angka">8</span><span class="kanji">八</span><span class="romaji">hachi</span></p>
+      <p><span class="angka">9</span><span class="kanji">九</span><span class="romaji">kyuu</span></p>
+    </div>
+  </div>
+</div>
 
       <!-- Puluhan -->
       <div class="learn-card" onclick="toggleCard(this)">
         <h3>Puluhan <i class="fas fa-chevron-down icon-right"></i></h3>
+        <p class="card-desc">Angka puluhan dibentuk dengan menyebut angka satuan diikuti "juu" (10).</p>
         <div class="card-content">
           <div class="grid">
-            <p>10 — 十 (juu)</p>
-            <p>20 — 二十 (ni-juu)</p>
-            <p>30 — 三十 (san-juu)</p>
-            <p>40 — 四十 (yon-juu)</p>
-            <p>50 — 五十 (go-juu)</p>
-            <p>60 — 六十 (roku-juu)</p>
-            <p>70 — 七十 (nana-juu)</p>
-            <p>80 — 八十 (hachi-juu)</p>
-            <p>90 — 九十 (kyuu-juu)</p>
+            <p><span class="angka">10</span><span class="kanji">十</span><span class="romaji">juu</span></p>
+            <p><span class="angka">20</span><span class="kanji">二十</span><span class="romaji">ni-juu</span></p>
+            <p><span class="angka">30</span><span class="kanji">三十</span><span class="romaji">san-juu</span></p>
+            <p><span class="angka">40</span><span class="kanji">四十</span><span class="romaji">yon-juu</span></p>
+            <p><span class="angka">50</span><span class="kanji">五十</span><span class="romaji">go-juu</span></p>
+            <p><span class="angka">60</span><span class="kanji">六十</span><span class="romaji">roku-juu</span></p>
+            <p><span class="angka">70</span><span class="kanji">七十</span><span class="romaji">nana-juu</span></p>
+            <p><span class="angka">80</span><span class="kanji">八十</span><span class="romaji">hachi-juu</span></p>
+            <p><span class="angka">90</span><span class="kanji">九十</span><span class="romaji">kyuu-juu</span></p>
           </div>
         </div>
       </div>
@@ -209,17 +256,18 @@
       <!-- Ratusan -->
       <div class="learn-card" onclick="toggleCard(this)">
         <h3>Ratusan <i class="fas fa-chevron-down icon-right"></i></h3>
+        <p class="card-desc">Angka ratusan diakhiri dengan "hyaku" (100), dan ada perubahan pelafalan tertentu.</p>
         <div class="card-content">
           <div class="grid">
-            <p>100 — 百 (hyaku)</p>
-            <p>200 — 二百 (ni-hyaku)</p>
-            <p>300 — 三百 (san-byaku)</p>
-            <p>400 — 四百 (yon-hyaku)</p>
-            <p>500 — 五百 (go-hyaku)</p>
-            <p>600 — 六百 (roppyaku)</p>
-            <p>700 — 七百 (nana-hyaku)</p>
-            <p>800 — 八百 (happyaku)</p>
-            <p>900 — 九百 (kyuu-hyaku)</p>
+            <p><span class="angka">100</span><span class="kanji">百</span><span class="romaji">hyaku</span></p>
+            <p><span class="angka">200</span><span class="kanji">二百</span><span class="romaji">ni-hyaku</span></p>
+            <p><span class="angka">300</span><span class="kanji">三百</span><span class="romaji">san-byaku</span></p>
+            <p><span class="angka">400</span><span class="kanji">四百</span><span class="romaji">yon-hyaku</span></p>
+            <p><span class="angka">500</span><span class="kanji">五百</span><span class="romaji">go-hyaku</span></p>
+            <p><span class="angka">600</span><span class="kanji">六百</span><span class="romaji">roppyaku</span></p>
+            <p><span class="angka">700</span><span class="kanji">七百</span><span class="romaji">nana-hyaku</span></p>
+            <p><span class="angka">800</span><span class="kanji">八百</span><span class="romaji">happyaku</span></p>
+            <p><span class="angka">900</span><span class="kanji">九百</span><span class="romaji">kyuu-hyaku</span></p>
           </div>
         </div>
       </div>
@@ -227,13 +275,14 @@
       <!-- Jutaan -->
       <div class="learn-card" onclick="toggleCard(this)">
         <h3>Jutaan <i class="fas fa-chevron-down icon-right"></i></h3>
+        <p class="card-desc">Untuk jutaan, digunakan "hyaku-man" yang berarti 100 x 10.000.</p>
         <div class="card-content">
           <div class="grid">
-            <p>1.000.000 — 百万 (hyaku-man)</p>
-            <p>2.000.000 — 二百万 (ni-hyaku-man)</p>
-            <p>3.000.000 — 三百万 (san-byaku-man)</p>
-            <p>4.000.000 — 四百万 (yon-hyaku-man)</p>
-            <p>5.000.000 — 五百万 (go-hyaku-man)</p>
+            <p><span class="angka">1.000.000</span><span class="kanji">百万</span><span class="romaji">hyaku-man</span></p>
+            <p><span class="angka">2.000.000</span><span class="kanji">二百万</span><span class="romaji">ni-hyaku-man</span></p>
+            <p><span class="angka">3.000.000</span><span class="kanji">三百万</span><span class="romaji">san-byaku-man</span></p>
+            <p><span class="angka">4.000.000</span><span class="kanji">四百万</span><span class="romaji">yon-hyaku-man</span></p>
+            <p><span class="angka">5.000.000</span><span class="kanji">五百万</span><span class="romaji">go-hyaku-man</span></p>
           </div>
         </div>
       </div>

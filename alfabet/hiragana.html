@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding-top: 60px;
+      padding-bottom: 65px;
+      background: #f0f0f0;
+      font-family: sans-serif;
+      overflow-x: hidden;
+      overscroll-behavior: contain;
+    }
+
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      z-index: 999;
+      box-sizing: border-box;
+    }
+
+    .top-navbar .info-icon {
+      font-size: 22px;
+      color: #333;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s;
+    }
+
+    .top-navbar .title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      text-transform: uppercase;
+    }
+
+    .pull-indicator {
+      position: fixed;
+      top: 10px;
+      left: 0;
+      right: 0;
+      height: 35px;
+      width: 35px;
+      display: flex;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      z-index: 998;
+      transform: translateY(-100%);
+      transition: transform 0.5s ease-out;
+    }
+
+    .pull-indicator i {
+      font-size: 20px;
+      color: #333;
+      animation: none;
+    }
+
+    .pull-indicator.refreshing i {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .content {
+      padding: 15px;
+    }
+
+    .hero-card {
+      background: #fdd835;
+      padding: 10px;
+      max-width: 700px;
+      text-align: center;
+      margin: 0 auto 12px auto;
+      position: relative;
+    }
+
+    .hero-card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+      color: #333;
+    }
+
+    .hero-card p {
+      font-size: 12px;
+      margin: 0;
+      color: #555;
+    }
+
+    .hero-card .pin-icon {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .hiragana-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+      gap: 5px;
+      max-width: 700px;
+      text-align: center;
+    }
+
+    .hiragana-grid div {
+      background: #fff;
+      padding: 5px;
+      font-size: 10px;
+      font-weight: bold;
+      color: #fdd835;
+    }
+
+    .hiragana-grid strong {
+      display: block;
+      font-size: 15px;
+      color: #222;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+a  </style>
+</head>
+<body>
+
+  <div class="top-navbar">
+    <div class="title">PLIXLEARN</div>
+    <div class="info-icon">
+      <i class="fas fa-circle-xmark" onclick="history.back()"></i>
+    </div>
+  </div>
+
+  <div class="pull-indicator" id="pullIndicator">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div class="content">
+    <div class="hero-card">
+      <i class="fas fa-thumbtack pin-icon"></i>
+      <h2>Hiragana</h2>
+      <p>Hiragana adalah salah satu dari tiga sistem penulisan Jepang yang digunakan untuk menulis kata-kata asli Jepang, partikel tata bahasa, dan pengakhiran kata kerja.</p>
+    </div>
+
+    <div class="hiragana-grid">
+      <div><strong>あ</strong>a</div><div><strong>い</strong>i</div><div><strong>う</strong>u</div><div><strong>え</strong>e</div><div><strong>お</strong>o</div>
+      <div><strong>か</strong>ka</div><div><strong>き</strong>ki</div><div><strong>く</strong>ku</div><div><strong>け</strong>ke</div><div><strong>こ</strong>ko</div>
+      <div><strong>さ</strong>sa</div><div><strong>し</strong>shi</div><div><strong>す</strong>su</div><div><strong>せ</strong>se</div><div><strong>そ</strong>so</div>
+      <div><strong>た</strong>ta</div><div><strong>ち</strong>chi</div><div><strong>つ</strong>tsu</div><div><strong>て</strong>te</div><div><strong>と</strong>to</div>
+      <div><strong>な</strong>na</div><div><strong>に</strong>ni</div><div><strong>ぬ</strong>nu</div><div><strong>ね</strong>ne</div><div><strong>の</strong>no</div>
+      <div><strong>は</strong>ha</div><div><strong>ひ</strong>hi</div><div><strong>ふ</strong>fu</div><div><strong>へ</strong>he</div><div><strong>ほ</strong>ho</div>
+      <div><strong>ま</strong>ma</div><div><strong>み</strong>mi</div><div><strong>む</strong>mu</div><div><strong>め</strong>me</div><div><strong>も</strong>mo</div>
+      <div><strong>や</strong>ya</div><div><strong>ゆ</strong>yu</div><div><strong>よ</strong>yo</div>
+      <div><strong>ら</strong>ra</div><div><strong>り</strong>ri</div><div><strong>る</strong>ru</div><div><strong>れ</strong>re</div><div><strong>ろ</strong>ro</div>
+      <div><strong>わ</strong>wa</div><div><strong>を</strong>wo</div><div><strong>ん</strong>n</div>
+    </div>
+  </div>
+
+  <script>
+    let startY=0,isPulling=false,pulling=false,threshold=50,indicator=document.getElementById("pullIndicator"),icon=indicator.querySelector("i");
+    document.addEventListener("touchstart",e=>{
+      if(window.scrollY<=0){
+        startY=e.touches[0].clientY;
+        isPulling=true;
+      }
+    });
+    document.addEventListener("touchmove",e=>{
+      if(!isPulling)return;
+      const t=e.touches[0].clientY,d=t-startY;
+      if(d>0&&window.scrollY<=0){
+        pulling=true;
+        e.preventDefault();
+        indicator.style.transition="none";
+        indicator.style.transform=`translateY(${Math.min(d,80)}px)`;
+        d>threshold?icon.classList.replace("fa-arrow-down","fa-rotate-right"):icon.classList.replace("fa-rotate-right","fa-arrow-down");
+      }
+    }, {passive:!1});
+    document.addEventListener("touchend",()=>{
+      if(!pulling){
+        isPulling=false;
+        return;
+      }
+      const e=parseFloat(indicator.style.transform.replace("translateY(",""));
+      indicator.style.transition="transform 0.5s ease-out";
+      if(e>threshold){
+        icon.classList.replace("fa-arrow-down","fa-rotate-right");
+        indicator.classList.add("refreshing");
+        indicator.style.transform="translateY(50px)";
+        setTimeout(()=>{location.reload()},700);
+      } else {
+        indicator.style.transform="translateY(-100%)";
+        icon.classList.replace("fa-rotate-right","fa-arrow-down");
+      }
+      isPulling=false;
+      pulling=false;
+    });
+  </script>
+
+</body>
+</html>
